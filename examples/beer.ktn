@@ -1,27 +1,30 @@
-99 :bottles_of_beer
+RUNTIME SECTION.
+
+99 bottles_of_beer
 
 DEFINITIONS SECTION.
 
+// (c) is copy
 bottles_of_beer (Int32 -> +IO):
-  :verse
+  (c) verse
   1 gt? ->
-    1 - :bottles_of_beer
+    1 less bottles_of_beer
 
 verse (Int32 -> +IO):
-  :on_the_wall
-  :of_beer "" :say
-  :take_one_down
-  - 1 :on_the_wall
-  "" :say
+  on_the_wall
+  of_beer "" say
+  take_one_down
+  1 less on_the_wall
+  "" say
 
 of_beer (Int32 -> +IO):
-  :bottles " of beer" :print
+  bottles " of beer" print
 
 on_the_wall (Int32 -> +IO):
-  :of_beer " on the wall" :say
+  of_beer " on the wall" say
 
 take_one_down (-> +IO):
-  "take one down, pass it around" :say
+  "take one down, pass it around" say
 
 bottles (Int32 -> +IO):
   | 0 = ->
@@ -29,5 +32,8 @@ bottles (Int32 -> +IO):
   | 1 = ->
     "one bottle"
   | ->
-    :show " bottles" :cat
-  :print
+    show " bottles" cat
+  print
+  
+less (Int32 Int32 -> Int32):
+  -
